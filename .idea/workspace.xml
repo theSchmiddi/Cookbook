@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Implements the RecipeRepository interface">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/RecipeRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/framework/CommandLineInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/usecase/AddRecipeUseCase.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/usecase/DeleteRecipeUseCase.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/usecase/SearchRecipeUseCase.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/usecase/UpdateRecipeUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -67,11 +64,50 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
-      <workItem from="1684870080822" duration="475000" />
+      <workItem from="1684870080822" duration="1741000" />
     </task>
+    <task id="LOCAL-00001" summary="Initialization">
+      <created>1684870635989</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684870635989</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implementation of the RecipeRepository with:&#10;- addRecipe&#10;- searchRecipes&#10;- updateRecipe&#10;- deleteRecipe">
+      <created>1684871187577</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684871187577</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implements the RecipeRepository interface">
+      <created>1684871568132</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684871568132</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialization" />
+    <MESSAGE value="Implementation of the RecipeRepository with:&#10;- addRecipe&#10;- searchRecipes&#10;- updateRecipe&#10;- deleteRecipe" />
+    <MESSAGE value="Implements the RecipeRepository interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implements the RecipeRepository interface" />
   </component>
 </project>
