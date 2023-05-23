@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeFileRepository implements RecipeRepository {
-    private static final String FILENAME = "recipes.txt";
+    private static final String FILENAME = "src/main/resources/recipes.txt";
 
     @Override
     public void addRecipe(Recipe recipe) {

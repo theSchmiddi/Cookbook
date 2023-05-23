@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Implementation of the UseCases:&#10;-add&#10;-delete&#10;-update&#10;-search">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Forgot Recipe.java to pushen">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/framework/CommandLineInterface.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
-      <workItem from="1684870080822" duration="2561000" />
+      <workItem from="1684870080822" duration="2870000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -110,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684871916824</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implementated the Application and the Commandoline conservation">
+      <created>1684872753836</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684872753836</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Forgot Recipe.java to pushen">
+      <created>1684872809308</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684872809308</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +145,8 @@
     <MESSAGE value="Implementation of the RecipeRepository with:&#10;- addRecipe&#10;- searchRecipes&#10;- updateRecipe&#10;- deleteRecipe" />
     <MESSAGE value="Implements the RecipeRepository interface" />
     <MESSAGE value="Implementation of the UseCases:&#10;-add&#10;-delete&#10;-update&#10;-search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of the UseCases:&#10;-add&#10;-delete&#10;-update&#10;-search" />
+    <MESSAGE value="Implementated the Application and the Commandoline conservation" />
+    <MESSAGE value="Forgot Recipe.java to pushen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot Recipe.java to pushen" />
   </component>
 </project>
