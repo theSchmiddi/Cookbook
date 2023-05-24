@@ -1,5 +1,3 @@
-package application;
-
 import domain.Recipe;
 import framework.RecipeFileRepository;
 import usecase.AddRecipeUseCase;
@@ -69,9 +67,12 @@ public class RecipeBookApplication {
         System.out.print("Enter preparation time (minutes): ");
         int preparationTime = scanner.nextInt();
         scanner.nextLine();
+        System.out.print("Enter servings: ");
+        int servings = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("Enter notes: ");
         String notes = scanner.nextLine();
-        Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, notes);
+        Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
         addRecipeUseCase.execute(recipe);
         System.out.println("Recipe added successfully");
     }
@@ -120,6 +121,12 @@ public class RecipeBookApplication {
             if (!newPreparationTimeString.isEmpty()) {
                 int newPreparationTime = Integer.parseInt(newPreparationTimeString);
                 recipe.setPreparationTime(newPreparationTime);
+            }
+            System.out.print("Enter new servings (leave blank to keep current servings): ");
+            String newServingsString = scanner.nextLine();
+            if (!newServingsString.isEmpty()) {
+                int newServings = Integer.parseInt(newServingsString);
+                recipe.setServings(newServings);
             }
             System.out.print("Enter new notes (leave blank to keep current notes): ");
             String newNotes = scanner.nextLine();

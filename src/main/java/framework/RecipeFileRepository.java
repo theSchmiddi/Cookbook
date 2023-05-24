@@ -92,6 +92,7 @@ public class RecipeFileRepository implements RecipeRepository {
         sb.append(String.join(",", recipe.getIngredients())).append("|");
         sb.append(recipe.getPreparation()).append("|");
         sb.append(recipe.getPreparationTime()).append("|");
+        sb.append(recipe.getServings()).append("|");
         sb.append(recipe.getNotes());
         return sb.toString();
     }
@@ -102,7 +103,8 @@ public class RecipeFileRepository implements RecipeRepository {
         List<String> ingredients = List.of(parts[1].split(","));
         String preparation = parts[2];
         int preparationTime = Integer.parseInt(parts[3]);
+        int servings = Integer.parseInt(parts[3]);
         String notes = parts[4];
-        return new Recipe(name, ingredients, preparation, preparationTime, notes);
+        return new Recipe(name, ingredients, preparation, preparationTime,servings ,notes);
     }
 }

@@ -8,14 +8,24 @@ public class Recipe {
     private List<String> ingredients;
     private String preparation;
     private int preparationTime;
+    private int servings;
     private String notes;
 
-    public Recipe(String name, List<String> ingredients, String preparation, int preparationTime, String notes) {
+    public Recipe(String name, List<String> ingredients, String preparation, int preparationTime,int servings, String notes) {
         this.name = name;
         this.ingredients = ingredients;
         this.preparation = preparation;
         this.preparationTime = preparationTime;
+        this.servings = servings;
         this.notes = notes;
+    }
+
+    public int getServings() {
+        return servings;
+    }
+
+    public void setServings(int servings) {
+        this.servings = servings;
     }
 
     public String getName() {
@@ -68,6 +78,7 @@ public class Recipe {
         }
         sb.append("Preparation: ").append(preparation).append("\n");
         sb.append("Preparation time: ").append(preparationTime).append(" minutes").append("\n");
+        sb.append("servings: ").append(preparationTime).append(" persons").append("\n");
         sb.append("Notes: ").append(notes).append("\n");
         return sb.toString();
     }

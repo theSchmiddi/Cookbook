@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Forgot Recipe.java to pushen">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Changed txt Path">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/framework/CommandLineInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +49,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RecipeBookApplication (1)">
+    <configuration name="RecipeBookApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RecipeBookApplication" />
+      <module name="Cookbook" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RecipeBookApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="application.RecipeBookApplication" />
       <module name="Cookbook" />
@@ -67,6 +79,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RecipeBookApplication (1)" />
         <item itemvalue="Application.RecipeBookApplication" />
       </list>
     </recent_temporary>
@@ -79,7 +92,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
-      <workItem from="1684870080822" duration="2870000" />
+      <workItem from="1684870080822" duration="4856000" />
+      <workItem from="1684927076597" duration="1395000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -123,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684872809308</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changed txt Path">
+      <created>1684873280095</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684873280095</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +168,7 @@
     <MESSAGE value="Implementation of the UseCases:&#10;-add&#10;-delete&#10;-update&#10;-search" />
     <MESSAGE value="Implementated the Application and the Commandoline conservation" />
     <MESSAGE value="Forgot Recipe.java to pushen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot Recipe.java to pushen" />
+    <MESSAGE value="Changed txt Path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed txt Path" />
   </component>
 </project>
