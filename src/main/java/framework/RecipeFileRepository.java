@@ -103,8 +103,8 @@ public class RecipeFileRepository implements RecipeRepository {
         List<String> ingredients = List.of(parts[1].split(","));
         String preparation = parts[2];
         int preparationTime = Integer.parseInt(parts[3]);
-        int servings = Integer.parseInt(parts[3]);
-        String notes = parts[4];
+        int servings = Integer.parseInt(parts[4]);
+        String notes = parts[5];
         return new Recipe(name, ingredients, preparation, preparationTime,servings ,notes);
     }
 }

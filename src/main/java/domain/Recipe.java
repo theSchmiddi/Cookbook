@@ -78,7 +78,7 @@ public class Recipe {
         }
         sb.append("Preparation: ").append(preparation).append("\n");
         sb.append("Preparation time: ").append(preparationTime).append(" minutes").append("\n");
-        sb.append("servings: ").append(preparationTime).append(" persons").append("\n");
+        sb.append("Servings: ").append(servings).append("\n");
         sb.append("Notes: ").append(notes).append("\n");
         return sb.toString();
     }
