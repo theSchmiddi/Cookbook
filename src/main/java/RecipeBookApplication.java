@@ -112,9 +112,22 @@ public class RecipeBookApplication {
             for (int i = 0; i < recipes.size(); i++) {
                 System.out.println((i + 1) + ". " + recipes.get(i).getName());
             }
-            System.out.print("Select a recipe: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = 0;
+            while (true) {
+                System.out.print("Select a recipe (or enter 0 to cancel): ");
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
+                    if (choice == 0) {
+                        return;
+                    }
+                    if (choice < 1 || choice > recipes.size()) {
+                        throw new NumberFormatException();
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input, please enter a number between 1 and " + recipes.size() + " (or enter 0 to cancel)");
+                }
+            }
             Recipe selectedRecipe = recipes.get(choice - 1);
             System.out.println(selectedRecipe);
         }
