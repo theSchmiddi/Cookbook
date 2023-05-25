@@ -78,16 +78,23 @@ public class RecipeBookApplication {
     }
 
     private void searchRecipes() {
+        RecipeFileRepository repository = new RecipeFileRepository();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter search query: ");
         String query = scanner.nextLine();
-        List<Recipe> recipes = searchRecipeUseCase.execute(query);
+        List<Recipe> recipes = repository.searchRecipes(query);
         if (recipes.isEmpty()) {
             System.out.println("No recipes found");
         } else {
-            for (Recipe recipe : recipes) {
-                System.out.println(recipe);
+            System.out.println("Found " + recipes.size() + " recipes:");
+            for (int i = 0; i < recipes.size(); i++) {
+                System.out.println((i + 1) + ". " + recipes.get(i).getName());
             }
+            System.out.print("Select a recipe: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            Recipe selectedRecipe = repository.selectRecipe(recipes.get(choice - 1).getName());
+            System.out.println(selectedRecipe);
         }
     }
 

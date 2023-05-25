@@ -29,7 +29,8 @@ public class RecipeFileRepository implements RecipeRepository {
             while ((line = br.readLine()) != null) {
                 Recipe recipe = stringToRecipe(line);
                 if (recipe.getName().toLowerCase().contains(query.toLowerCase())) {
-                    recipes.add(recipe);
+                    Recipe r = new Recipe(recipe.getName(), null, null, 0, 0, null);
+                    recipes.add(r);
                 }
             }
         } catch (IOException e) {
@@ -84,6 +85,21 @@ public class RecipeFileRepository implements RecipeRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Recipe selectRecipe(String recipeName) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                Recipe recipe = stringToRecipe(line);
+                if (recipe.getName().equals(recipeName)) {
+                    return recipe;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private String recipeToString(Recipe recipe) {
