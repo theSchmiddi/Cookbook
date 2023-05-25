@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Fixing serving problems">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added selection of recipes by search">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/usecase/SearchRecipeUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/usecase/SearchRecipeUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="6571000" />
+      <workItem from="1684927076597" duration="13056000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -157,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684929232746</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added selection of recipes by search">
+      <created>1685017347053</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685017347053</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +194,7 @@
     <MESSAGE value="Changed txt Path" />
     <MESSAGE value="Add Servings to Recipe" />
     <MESSAGE value="Fixing serving problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing serving problems" />
+    <MESSAGE value="Added selection of recipes by search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added selection of recipes by search" />
   </component>
 </project>

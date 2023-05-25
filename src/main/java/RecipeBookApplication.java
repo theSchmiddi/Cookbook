@@ -1,3 +1,4 @@
+import domain.Ingredient;
 import domain.Recipe;
 import framework.RecipeFileRepository;
 import usecase.AddRecipeUseCase;
@@ -5,14 +6,15 @@ import usecase.DeleteRecipeUseCase;
 import usecase.SearchRecipeUseCase;
 import usecase.UpdateRecipeUseCase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class RecipeBookApplication {
-    private AddRecipeUseCase addRecipeUseCase;
-    private SearchRecipeUseCase searchRecipeUseCase;
-    private UpdateRecipeUseCase updateRecipeUseCase;
-    private DeleteRecipeUseCase deleteRecipeUseCase;
+    private final AddRecipeUseCase addRecipeUseCase;
+    private final SearchRecipeUseCase searchRecipeUseCase;
+    private final UpdateRecipeUseCase updateRecipeUseCase;
+    private final DeleteRecipeUseCase deleteRecipeUseCase;
 
     public RecipeBookApplication() {
         RecipeFileRepository recipeRepository = new RecipeFileRepository();
@@ -61,15 +63,36 @@ public class RecipeBookApplication {
         System.out.print("Enter recipe name: ");
         String name = scanner.nextLine();
         System.out.print("Enter ingredients (comma-separated): ");
-        List<String> ingredients = List.of(scanner.nextLine().split(","));
+        List<String> ingredientStrings = List.of(scanner.nextLine().split(","));
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (String ingredientString : ingredientStrings) {
+            System.out.print("Enter amount for " + ingredientString.trim() + ": ");
+            String amount = scanner.nextLine();
+            Ingredient ingredient = new Ingredient(ingredientString.trim(), amount.trim());
+            ingredients.add(ingredient);
+        }
         System.out.print("Enter preparation: ");
         String preparation = scanner.nextLine();
-        System.out.print("Enter preparation time (minutes): ");
-        int preparationTime = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter servings: ");
-        int servings = scanner.nextInt();
-        scanner.nextLine();
+        int preparationTime = 0;
+        while (true) {
+            System.out.print("Enter preparation time (minutes): ");
+            try {
+                preparationTime = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, please enter a number");
+            }
+        }
+        int servings = 0;
+        while (true) {
+            System.out.print("Enter servings: ");
+            try {
+                servings = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, please enter a number");
+            }
+        }
         System.out.print("Enter notes: ");
         String notes = scanner.nextLine();
         Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
@@ -78,11 +101,10 @@ public class RecipeBookApplication {
     }
 
     private void searchRecipes() {
-        RecipeFileRepository repository = new RecipeFileRepository();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter search query: ");
         String query = scanner.nextLine();
-        List<Recipe> recipes = repository.searchRecipes(query);
+        List<Recipe> recipes = searchRecipeUseCase.execute(query);
         if (recipes.isEmpty()) {
             System.out.println("No recipes found");
         } else {
@@ -93,7 +115,7 @@ public class RecipeBookApplication {
             System.out.print("Select a recipe: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
-            Recipe selectedRecipe = repository.selectRecipe(recipes.get(choice - 1).getName());
+            Recipe selectedRecipe = recipes.get(choice - 1);
             System.out.println(selectedRecipe);
         }
     }
@@ -107,37 +129,53 @@ public class RecipeBookApplication {
             System.out.println("Recipe not found");
         } else {
             Recipe recipe = recipes.get(0);
-            System.out.print("Enter new recipe name (leave blank to keep current name): ");
+            System.out.println("Current recipe:");
+            System.out.println(recipe);
+            System.out.println("Enter new recipe information (leave blank to keep current information):");
+            System.out.print("Name: ");
             String newName = scanner.nextLine();
-            if (!newName.isEmpty()) {
+            if (!newName.isBlank()) {
                 recipe.setName(newName);
             }
-            System.out.print("Enter new ingredients (comma-separated, leave blank to keep current ingredients): ");
+            System.out.print("Ingredients (comma-separated): ");
             String newIngredientsString = scanner.nextLine();
-            if (!newIngredientsString.isEmpty()) {
-                List<String> newIngredients = List.of(newIngredientsString.split(","));
+            if (!newIngredientsString.isBlank()) {
+                List<String> newIngredientsStringList = List.of(newIngredientsString.split(","));
+                List<Ingredient> newIngredients = new ArrayList<>();
+                for (String ingredientString : newIngredientsStringList) {
+                    Ingredient ingredient = new Ingredient(ingredientString.trim(), "");
+                    newIngredients.add(ingredient);
+                }
                 recipe.setIngredients(newIngredients);
             }
-            System.out.print("Enter new preparation (leave blank to keep current preparation): ");
+            System.out.print("Preparation: ");
             String newPreparation = scanner.nextLine();
-            if (!newPreparation.isEmpty()) {
+            if (!newPreparation.isBlank()) {
                 recipe.setPreparation(newPreparation);
             }
-            System.out.print("Enter new preparation time (minutes, leave blank to keep current preparation time): ");
+            System.out.print("Preparation time (minutes): ");
             String newPreparationTimeString = scanner.nextLine();
-            if (!newPreparationTimeString.isEmpty()) {
-                int newPreparationTime = Integer.parseInt(newPreparationTimeString);
-                recipe.setPreparationTime(newPreparationTime);
+            if (!newPreparationTimeString.isBlank()) {
+                try {
+                    int newPreparationTime = Integer.parseInt(newPreparationTimeString);
+                    recipe.setPreparationTime(newPreparationTime);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input for preparation time, keeping current value");
+                }
             }
-            System.out.print("Enter new servings (leave blank to keep current servings): ");
+            System.out.print("Servings: ");
             String newServingsString = scanner.nextLine();
-            if (!newServingsString.isEmpty()) {
-                int newServings = Integer.parseInt(newServingsString);
-                recipe.setServings(newServings);
+            if (!newServingsString.isBlank()) {
+                try {
+                    int newServings = Integer.parseInt(newServingsString);
+                    recipe.setServings(newServings);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input for servings, keeping current value");
+                }
             }
-            System.out.print("Enter new notes (leave blank to keep current notes): ");
+            System.out.print("Notes: ");
             String newNotes = scanner.nextLine();
-            if (!newNotes.isEmpty()) {
+            if (!newNotes.isBlank()) {
                 recipe.setNotes(newNotes);
             }
             updateRecipeUseCase.execute(recipe);
@@ -153,8 +191,15 @@ public class RecipeBookApplication {
         if (recipes.isEmpty()) {
             System.out.println("Recipe not found");
         } else {
-            Recipe recipe = recipes.get(0);
-            deleteRecipeUseCase.execute(recipe);
+            System.out.println("Found " + recipes.size() + " recipes:");
+            for (int i = 0; i < recipes.size(); i++) {
+                System.out.println((i + 1) + ". " + recipes.get(i).getName());
+            }
+            System.out.print("Select a recipe to delete: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            Recipe selectedRecipe = recipes.get(choice - 1);
+            deleteRecipeUseCase.execute(selectedRecipe);
             System.out.println("Recipe deleted successfully");
         }
     }

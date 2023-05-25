@@ -5,27 +5,19 @@ import java.util.List;
 
 public class Recipe {
     private String name;
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
     private String preparation;
     private int preparationTime;
     private int servings;
     private String notes;
 
-    public Recipe(String name, List<String> ingredients, String preparation, int preparationTime,int servings, String notes) {
+    public Recipe(String name, List<Ingredient> ingredients, String preparation, int preparationTime, int servings, String notes) {
         this.name = name;
         this.ingredients = ingredients;
         this.preparation = preparation;
         this.preparationTime = preparationTime;
         this.servings = servings;
         this.notes = notes;
-    }
-
-    public int getServings() {
-        return servings;
-    }
-
-    public void setServings(int servings) {
-        this.servings = servings;
     }
 
     public String getName() {
@@ -36,11 +28,11 @@ public class Recipe {
         this.name = name;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -60,6 +52,14 @@ public class Recipe {
         this.preparationTime = preparationTime;
     }
 
+    public int getServings() {
+        return servings;
+    }
+
+    public void setServings(int servings) {
+        this.servings = servings;
+    }
+
     public String getNotes() {
         return notes;
     }
@@ -71,15 +71,15 @@ public class Recipe {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Name: ").append(name).append("\n");
-        sb.append("Ingredients: ").append("\n");
-        for (String ingredient : ingredients) {
+        sb.append(name).append("\n");
+        sb.append("Ingredients:\n");
+        for (Ingredient ingredient : ingredients) {
             sb.append("- ").append(ingredient).append("\n");
         }
-        sb.append("Preparation: ").append(preparation).append("\n");
-        sb.append("Preparation time: ").append(preparationTime).append(" minutes").append("\n");
+        sb.append("Preparation:\n").append(preparation).append("\n");
+        sb.append("Preparation time: ").append(preparationTime).append(" minutes\n");
         sb.append("Servings: ").append(servings).append("\n");
-        sb.append("Notes: ").append(notes).append("\n");
+        sb.append("Notes:\n").append(notes).append("\n");
         return sb.toString();
     }
 }

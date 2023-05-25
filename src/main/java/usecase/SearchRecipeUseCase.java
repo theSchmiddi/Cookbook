@@ -15,4 +15,5 @@ public class SearchRecipeUseCase {
     public List<Recipe> execute(String query) {
         return recipeRepository.searchRecipes(query);
     }
+
 }

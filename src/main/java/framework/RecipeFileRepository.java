@@ -1,5 +1,6 @@
 package framework;
 
+import domain.Ingredient;
 import domain.Recipe;
 import domain.RecipeRepository;
 
@@ -29,8 +30,7 @@ public class RecipeFileRepository implements RecipeRepository {
             while ((line = br.readLine()) != null) {
                 Recipe recipe = stringToRecipe(line);
                 if (recipe.getName().toLowerCase().contains(query.toLowerCase())) {
-                    Recipe r = new Recipe(recipe.getName(), null, null, 0, 0, null);
-                    recipes.add(r);
+                    recipes.add(recipe);
                 }
             }
         } catch (IOException e) {
@@ -105,7 +105,14 @@ public class RecipeFileRepository implements RecipeRepository {
     private String recipeToString(Recipe recipe) {
         StringBuilder sb = new StringBuilder();
         sb.append(recipe.getName()).append("|");
-        sb.append(String.join(",", recipe.getIngredients())).append("|");
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            sb.append(ingredient.getName());
+            if (!ingredient.getAmount().isEmpty()) {
+                sb.append(":").append(ingredient.getAmount());
+            }
+            sb.append(",");
+        }
+        sb.append("|");
         sb.append(recipe.getPreparation()).append("|");
         sb.append(recipe.getPreparationTime()).append("|");
         sb.append(recipe.getServings()).append("|");
@@ -116,11 +123,24 @@ public class RecipeFileRepository implements RecipeRepository {
     private Recipe stringToRecipe(String line) {
         String[] parts = line.split("\\|");
         String name = parts[0];
-        List<String> ingredients = List.of(parts[1].split(","));
+        List<Ingredient> ingredients = new ArrayList<>();
+        String[] ingredientParts = parts[1].split(",");
+        for (String ingredientPart : ingredientParts) {
+            String[] ingredient = ingredientPart.split(":");
+            String ingredientName = ingredient[0];
+            String ingredientAmount = "";
+            if (ingredient.length > 1) {
+                ingredientAmount = ingredient[1];
+            }
+            ingredients.add(new Ingredient(ingredientName, ingredientAmount));
+        }
         String preparation = parts[2];
         int preparationTime = Integer.parseInt(parts[3]);
         int servings = Integer.parseInt(parts[4]);
-        String notes = parts[5];
-        return new Recipe(name, ingredients, preparation, preparationTime,servings ,notes);
+        String notes = "";
+        if (parts.length > 5) {
+            notes = parts[5];
+        }
+        return new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
     }
 }
