@@ -14,6 +14,8 @@ public class RecipeFileRepository implements RecipeRepository {
 
     @Override
     public void addRecipe(Recipe recipe) {
+        int id = getNextId();
+        recipe = new Recipe(id, recipe.getName(), recipe.getIngredients(), recipe.getPreparation(), recipe.getPreparationTime(), recipe.getServings(), recipe.getNotes());
         try (FileWriter fw = new FileWriter(FILENAME, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
@@ -97,6 +99,23 @@ public class RecipeFileRepository implements RecipeRepository {
             Random random = new Random();
             return recipes.get(random.nextInt(recipes.size()));
         }
+    }
+
+    private int getNextId() {
+        int nextId = 1;
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                int id = Integer.parseInt(parts[0]);
+                if (id >= nextId) {
+                    nextId = id + 1;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nextId;
     }
 
     @Override

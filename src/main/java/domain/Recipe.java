@@ -23,22 +23,6 @@ public class Recipe {
         this.notes = notes;
     }
 
-    public Recipe(String name, List<Ingredient> ingredients, String preparation, int preparationTime, int servings, String notes) {
-        this.id = generateId();
-        this.name = name;
-        this.ingredients = ingredients;
-        this.preparation = preparation;
-        this.preparationTime = preparationTime;
-        this.servings = servings;
-        this.notes = notes;
-    }
-
-    private static int nextId = 1;
-
-    private static int generateId() {
-        return nextId++;
-    }
-
     public int getId() {
         return id;
     }
@@ -47,48 +31,26 @@ public class Recipe {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<Ingredient> getIngredients() {
         return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
     }
 
     public String getPreparation() {
         return preparation;
     }
 
-    public void setPreparation(String preparation) {
-        this.preparation = preparation;
-    }
-
     public int getPreparationTime() {
         return preparationTime;
     }
 
-    public void setPreparationTime(int preparationTime) {
-        this.preparationTime = preparationTime;
-    }
 
     public int getServings() {
         return servings;
     }
 
-    public void setServings(int servings) {
-        this.servings = servings;
-    }
 
     public String getNotes() {
         return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 
     public Ingredient getIngredientByName(String name) {

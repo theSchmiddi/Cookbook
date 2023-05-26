@@ -211,8 +211,8 @@ public class RecipeBookApplication {
         }
         System.out.print("Enter notes: ");
         String notes = scanner.nextLine();
-        Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
-        addRecipeUseCase.execute(recipe); // Pass the Recipe object
+        Recipe recipe = new Recipe(0, name, ingredients, preparation, preparationTime, servings, notes);
+        addRecipeUseCase.execute(recipe);
         System.out.println("Recipe added successfully");
     }
         private void searchRecipes() {

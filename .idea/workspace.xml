@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Fixed warnings in RecipeBookApplication">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added id to recipe, to fix update problems">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RecipeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/framework/ShoppingListFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/ShoppingListFileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/usecase/DeleteRecipeUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/usecase/DeleteRecipeUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/usecase/UpdateRecipeUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/usecase/UpdateRecipeUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="48270000" />
+      <workItem from="1684927076597" duration="49602000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -220,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685124751464</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added id to recipe, to fix update problems">
+      <created>1685130893502</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1685130893502</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +256,7 @@
     <MESSAGE value="Fixed unit problems" />
     <MESSAGE value="Added invalid check to run()" />
     <MESSAGE value="Fixed warnings in RecipeBookApplication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed warnings in RecipeBookApplication" />
+    <MESSAGE value="Added id to recipe, to fix update problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added id to recipe, to fix update problems" />
   </component>
 </project>
