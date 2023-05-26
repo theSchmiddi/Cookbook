@@ -27,6 +27,30 @@ public class RecipeBookApplication {
         shoppingListUseCase = new ShoppingListUseCase(shoppingListRepository);
     }
 
+    private Recipe choseRecipes(List<Recipe> recipes){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Found " + recipes.size() + " recipes:");
+        for (int i = 0; i < recipes.size(); i++) {
+            System.out.println((i + 1) + ". " + recipes.get(i).getName());
+        }
+        int choice;
+        while (true) {
+            System.out.print("Select a recipe (or enter 0 to cancel): ");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice == 0) {
+                    return null;
+                }
+                if (choice < 1 || choice > recipes.size()) {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, please enter a number between 1 and " + recipes.size() + " (or enter 0 to cancel)");
+            }
+        }
+        return recipes.get(choice - 1);
+    }
     public void run() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -159,7 +183,6 @@ public class RecipeBookApplication {
             do {
                 System.out.print("Enter unit for " + ingredientString.trim() + ": ");
                 unit = scanner.nextLine().trim();
-                System.out.println("Invalid input, please enter a non-empty unit");
             } while (unit.isEmpty());
             Ingredient ingredient = new Ingredient(ingredientString.trim(), amount, unit);
             ingredients.add(ingredient);
@@ -189,7 +212,7 @@ public class RecipeBookApplication {
         System.out.print("Enter notes: ");
         String notes = scanner.nextLine();
         Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
-        addRecipeUseCase.execute(recipe);
+        addRecipeUseCase.execute(recipe); // Pass the Recipe object
         System.out.println("Recipe added successfully");
     }
         private void searchRecipes() {
@@ -200,114 +223,131 @@ public class RecipeBookApplication {
             if (recipes.isEmpty()) {
                 System.out.println("No recipes found");
             } else {
-                System.out.println("Found " + recipes.size() + " recipes:");
-                for (int i = 0; i < recipes.size(); i++) {
-                    System.out.println((i + 1) + ". " + recipes.get(i).getName());
-                }
-                int choice;
-                while (true) {
-                    System.out.print("Select a recipe (or enter 0 to cancel): ");
-                    try {
-                        choice = Integer.parseInt(scanner.nextLine());
-                        if (choice == 0) {
-                            return;
-                        }
-                        if (choice < 1 || choice > recipes.size()) {
-                            throw new NumberFormatException();
-                        }
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input, please enter a number between 1 and " + recipes.size() + " (or enter 0 to cancel)");
-                    }
-                }
-                Recipe selectedRecipe = recipes.get(choice - 1);
-                System.out.println(selectedRecipe);
+                Recipe selectedRecipe = choseRecipes(recipes);
+                if(!(selectedRecipe == null)) System.out.println(selectedRecipe);
             }
         }
 
-        private void updateRecipe() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter recipe name: ");
-            String name = scanner.nextLine();
-            List<Recipe> recipes = searchRecipeUseCase.execute(name);
-            if (recipes.isEmpty()) {
-                System.out.println("Recipe not found");
-            } else {
-                Recipe recipe = recipes.get(0);
-                System.out.println("Current recipe:");
-                System.out.println(recipe);
-                System.out.println("Enter new recipe information (leave blank to keep current information):");
-                System.out.print("Name: ");
-                String newName = scanner.nextLine();
-                if (!newName.isBlank()) {
-                    recipe.setName(newName);
-                }
-                System.out.print("Ingredients (comma-separated): ");
-                String newIngredientsString = scanner.nextLine();
-                if (!newIngredientsString.isBlank()) {
-                    List<String> newIngredientsStringList = List.of(newIngredientsString.split(","));
-                    List<Ingredient> newIngredients = new ArrayList<>();
-                    for (String ingredientString : newIngredientsStringList) {
-                        Ingredient ingredient = new Ingredient(ingredientString.trim(), 0, "");
-                        newIngredients.add(ingredient);
-                    }
-                    recipe.setIngredients(newIngredients);
-                }
-                System.out.print("Preparation: ");
-                String newPreparation = scanner.nextLine();
-                if (!newPreparation.isBlank()) {
-                    recipe.setPreparation(newPreparation);
-                }
-                System.out.print("Preparation time (minutes): ");
-                String newPreparationTimeString = scanner.nextLine();
-                if (!newPreparationTimeString.isBlank()) {
-                    try {
-                        int newPreparationTime = Integer.parseInt(newPreparationTimeString);
-                        recipe.setPreparationTime(newPreparationTime);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input for preparation time, keeping current value");
-                    }
-                }
-                System.out.print("Servings: ");
-                String newServingsString = scanner.nextLine();
-                if (!newServingsString.isBlank()) {
-                    try {
-                        int newServings = Integer.parseInt(newServingsString);
-                        recipe.setServings(newServings);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input for servings, keeping current value");
-                    }
-                }
-                System.out.print("Notes: ");
-                String newNotes = scanner.nextLine();
-                if (!newNotes.isBlank()) {
-                    recipe.setNotes(newNotes);
-                }
-                updateRecipeUseCase.execute(recipe);
-                System.out.println("Recipe updated successfully");
+    private void updateRecipe() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter search query: ");
+        String query = scanner.nextLine();
+        List<Recipe> recipes = searchRecipeUseCase.execute(query);
+        if (recipes.isEmpty()) {
+            System.out.println("No recipes found");
+        } else {
+            Recipe recipe = choseRecipes(recipes);
+            if (recipe == null) {
+                return;
             }
+            System.out.println("Current recipe:");
+            System.out.println(recipe);
+            System.out.println("Enter new recipe information (leave blank to keep current information):");
+            System.out.print("Name: ");
+            String newName = scanner.nextLine();
+            if (newName.isBlank()) {
+                newName = recipe.getName();
+            }
+            System.out.print("Ingredients (comma-separated): ");
+            String newIngredientsString = scanner.nextLine();
+            List<Ingredient> newIngredients = null;
+            if (!newIngredientsString.isBlank()) {
+                List<String> newIngredientsStringList = List.of(newIngredientsString.split(","));
+                newIngredients = new ArrayList<>();
+                for (String ingredientString : newIngredientsStringList) {
+                    Ingredient currentIngredient = recipe.getIngredientByName(ingredientString.trim());
+                    if (currentIngredient == null) {
+                        System.out.println("Invalid ingredient name: " + ingredientString.trim());
+                        continue;
+                    }
+                    int newAmount = currentIngredient.getAmount();
+                    while (true) {
+                        System.out.print("Enter amount for " + ingredientString.trim() + " (or leave blank to keep current amount): ");
+                        String newAmountString = scanner.nextLine();
+                        if (newAmountString.isBlank()) {
+                            break;
+                        }
+                        try {
+                            newAmount = Integer.parseInt(newAmountString.trim());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Invalid input, please enter a number");
+                        }
+                    }
+                    String newUnit = currentIngredient.getUnit();
+                    while (true) {
+                        System.out.print("Enter unit for " + ingredientString.trim() + " (or leave blank to keep current unit): ");
+                        String newUnitString = scanner.nextLine().trim();
+                        if (newUnitString.isBlank()) {
+                            break;
+                        }
+                        if (newUnitString.isEmpty()) {
+                            System.out.println("Invalid input, please enter a non-empty unit");
+                        } else {
+                            newUnit = newUnitString;
+                            break;
+                        }
+                    }
+                    Ingredient newIngredient = new Ingredient(ingredientString.trim(), newAmount, newUnit);
+                    newIngredients.add(newIngredient);
+                }
+            }
+            System.out.print("Preparation: ");
+            String newPreparation = scanner.nextLine();
+            if (newPreparation.isBlank()) {
+                newPreparation = recipe.getPreparation();
+            }
+            System.out.print("Preparation time (minutes): ");
+            String newPreparationTimeString = scanner.nextLine();
+            int newPreparationTime = recipe.getPreparationTime();
+            if (!newPreparationTimeString.isBlank()) {
+                try {
+                    newPreparationTime = Integer.parseInt(newPreparationTimeString);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input for preparation time, keeping current value");
+                }
+            }
+            System.out.print("Servings: ");
+            String newServingsString = scanner.nextLine();
+            int newServings = recipe.getServings();
+            if (!newServingsString.isBlank()) {
+                try {
+                    newServings = Integer.parseInt(newServingsString);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input for servings, keeping current value");
+                }
+            }
+            System.out.print("Notes: ");
+            String newNotes = scanner.nextLine();
+            if (newNotes.isBlank()) {
+                newNotes = recipe.getNotes();
+            }
+            Recipe newRecipe = new Recipe(recipe.getId(), newName, newIngredients, newPreparation, newPreparationTime, newServings, newNotes);
+            updateRecipeUseCase.execute(recipe.getId(), newRecipe); // Pass the ID of the recipe to update
+            System.out.println("Recipe updated successfully");
         }
+    }
 
-        private void deleteRecipe() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter recipe name: ");
-            String name = scanner.nextLine();
-            List<Recipe> recipes = searchRecipeUseCase.execute(name);
-            if (recipes.isEmpty()) {
-                System.out.println("Recipe not found");
-            } else {
-                System.out.println("Found " + recipes.size() + " recipes:");
-                for (int i = 0; i < recipes.size(); i++) {
-                    System.out.println((i + 1) + ". " + recipes.get(i).getName());
-                }
-                System.out.print("Select a recipe to delete: ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-                Recipe selectedRecipe = recipes.get(choice - 1);
-                deleteRecipeUseCase.execute(selectedRecipe);
-                System.out.println("Recipe deleted successfully");
+    private void deleteRecipe() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter recipe name: ");
+        String name = scanner.nextLine();
+        List<Recipe> recipes = searchRecipeUseCase.execute(name);
+        if (recipes.isEmpty()) {
+            System.out.println("Recipe not found");
+        } else {
+            System.out.println("Found " + recipes.size() + " recipes:");
+            for (int i = 0; i < recipes.size(); i++) {
+                System.out.println((i + 1) + ". " + recipes.get(i).getName());
             }
+            System.out.print("Select a recipe to delete: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            Recipe selectedRecipe = recipes.get(choice - 1);
+            deleteRecipeUseCase.execute(selectedRecipe.getId()); // Pass the ID of the selected recipe
+            System.out.println("Recipe deleted successfully");
         }
+    }
 
     private void addRecipeToShoppingList() {
         Scanner scanner = new Scanner(System.in);

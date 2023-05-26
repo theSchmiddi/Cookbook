@@ -1,4 +1,1 @@
-test|a:1:l,b:2:kg,|testing|10|1|
-test2|b:10:kg,c:5:ml,|testing stuff|10|5|test
-test3|c:10:l,|ml|10|2|
-abc|a:10:liter,b:7:kg,|g|10|2|
+1|test2||do|10|2|

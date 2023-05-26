@@ -2,8 +2,10 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Recipe {
+    private int id;
     private String name;
     private List<Ingredient> ingredients;
     private String preparation;
@@ -11,13 +13,34 @@ public class Recipe {
     private int servings;
     private String notes;
 
+    public Recipe(int id, String name, List<Ingredient> ingredients, String preparation, int preparationTime, int servings, String notes) {
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients != null ? ingredients : new ArrayList<>();
+        this.preparation = preparation;
+        this.preparationTime = preparationTime;
+        this.servings = servings;
+        this.notes = notes;
+    }
+
     public Recipe(String name, List<Ingredient> ingredients, String preparation, int preparationTime, int servings, String notes) {
+        this.id = generateId();
         this.name = name;
         this.ingredients = ingredients;
         this.preparation = preparation;
         this.preparationTime = preparationTime;
         this.servings = servings;
         this.notes = notes;
+    }
+
+    private static int nextId = 1;
+
+    private static int generateId() {
+        return nextId++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -66,6 +89,28 @@ public class Recipe {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Ingredient getIngredientByName(String name) {
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getName().equalsIgnoreCase(name)) {
+                return ingredient;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return id == recipe.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

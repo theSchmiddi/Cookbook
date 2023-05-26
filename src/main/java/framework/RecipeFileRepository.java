@@ -41,20 +41,20 @@ public class RecipeFileRepository implements RecipeRepository {
     }
 
     @Override
-    public void updateRecipe(Recipe recipe) {
-        List<Recipe> recipes = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                Recipe r = stringToRecipe(line);
-                if (r.getName().equals(recipe.getName())) {
-                    recipes.add(recipe);
-                } else {
-                    recipes.add(r);
-                }
+    public void updateRecipe(int id, Recipe newRecipe) {
+        List<Recipe> recipes = readRecipesFromFile();
+        boolean recipeFound = false;
+        for (int i = 0; i < recipes.size(); i++) {
+            Recipe r = recipes.get(i);
+            if (r.getId() == id) {
+                recipes.set(i, newRecipe);
+                recipeFound = true;
+                break;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        if (!recipeFound) {
+            System.out.println("Recipe not found");
+            return;
         }
         try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
             for (Recipe r : recipes) {
@@ -66,13 +66,13 @@ public class RecipeFileRepository implements RecipeRepository {
     }
 
     @Override
-    public void deleteRecipe(Recipe recipe) {
+    public void deleteRecipe(int id) {
         List<Recipe> recipes = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Recipe r = stringToRecipe(line);
-                if (!r.getName().equals(recipe.getName())) {
+                if (r.getId() != id) {
                     recipes.add(r);
                 }
             }
@@ -99,6 +99,22 @@ public class RecipeFileRepository implements RecipeRepository {
         }
     }
 
+    @Override
+    public Recipe searchRecipesById(int id) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                Recipe recipe = stringToRecipe(line);
+                if (recipe.getId() == id) {
+                    return recipe;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private List<Recipe> readRecipesFromFile() {
         List<Recipe> recipes = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILENAME))) {
@@ -113,10 +129,9 @@ public class RecipeFileRepository implements RecipeRepository {
         return recipes;
     }
 
-
-
     private String recipeToString(Recipe recipe) {
         StringBuilder sb = new StringBuilder();
+        sb.append(recipe.getId()).append("|");
         sb.append(recipe.getName()).append("|");
         for (Ingredient ingredient : recipe.getIngredients()) {
             sb.append(ingredient.getName());
@@ -136,25 +151,30 @@ public class RecipeFileRepository implements RecipeRepository {
 
     private Recipe stringToRecipe(String line) {
         String[] parts = line.split("\\|");
-        String name = parts[0];
+        int id = Integer.parseInt(parts[0]);
+        String name = parts[1];
         List<Ingredient> ingredients = new ArrayList<>();
-        String[] ingredientParts = parts[1].split(",");
+        String[] ingredientParts = parts[2].split(",");
         for (String ingredientPart : ingredientParts) {
             String[] ingredient = ingredientPart.split(":");
             String ingredientName = ingredient[0];
             int ingredientAmount = 0;
             String ingredientUnit = "";
+            if (ingredient.length > 1) {
                 ingredientAmount = Integer.parseInt(ingredient[1]);
+            }
+            if (ingredient.length > 2) {
                 ingredientUnit = ingredient[2];
+            }
             ingredients.add(new Ingredient(ingredientName, ingredientAmount, ingredientUnit));
         }
-        String preparation = parts[2];
-        int preparationTime = Integer.parseInt(parts[3]);
-        int servings = Integer.parseInt(parts[4]);
+        String preparation = parts[3];
+        int preparationTime = Integer.parseInt(parts[4]);
+        int servings = Integer.parseInt(parts[5]);
         String notes = "";
-        if (parts.length > 5) {
-            notes = parts[5];
+        if (parts.length > 6) {
+            notes = parts[6];
         }
-        return new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
+        return new Recipe(id, name, ingredients, preparation, preparationTime, servings, notes);
     }
 }

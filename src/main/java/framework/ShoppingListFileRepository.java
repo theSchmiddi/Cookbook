@@ -42,11 +42,9 @@ public class ShoppingListFileRepository implements ShoppingListRepository {
     }
 
     private String itemToString(ShoppingListItem item) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(item.getIngredient()).append(":");
-        sb.append(item.getQuantity()).append(" ");
-        sb.append(item.getUnit());
-        return sb.toString();
+        return item.getIngredient() + ":" +
+                item.getQuantity() + " " +
+                item.getUnit();
     }
 
     private ShoppingListItem stringToItem(String line) {

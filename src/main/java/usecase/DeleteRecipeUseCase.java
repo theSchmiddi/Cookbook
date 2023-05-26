@@ -10,7 +10,12 @@ public class DeleteRecipeUseCase {
         this.recipeRepository = recipeRepository;
     }
 
-    public void execute(Recipe recipe) {
-        recipeRepository.deleteRecipe(recipe);
+    public void execute(int id) {
+        Recipe recipe = recipeRepository.searchRecipesById(id);
+        if (recipe == null) {
+            System.out.println("Recipe not found");
+            return;
+        }
+        recipeRepository.deleteRecipe(id);
     }
 }
