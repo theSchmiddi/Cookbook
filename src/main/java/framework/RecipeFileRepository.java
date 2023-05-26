@@ -10,7 +10,14 @@ import java.util.List;
 import java.util.Random;
 
 public class RecipeFileRepository implements RecipeRepository {
-    private static final String FILENAME = "src/main/resources/recipes.txt";
+    private String FILENAME;
+    public RecipeFileRepository() {
+        this.FILENAME = "src/main/resources/recipes.txt";
+    }
+    public RecipeFileRepository(String filename) {
+        this.FILENAME = filename;
+    }
+
 
     @Override
     public void addRecipe(Recipe recipe) {
