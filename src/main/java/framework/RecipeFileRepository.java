@@ -7,6 +7,7 @@ import domain.RecipeRepository;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RecipeFileRepository implements RecipeRepository {
     private static final String FILENAME = "src/main/resources/recipes.txt";
@@ -87,20 +88,32 @@ public class RecipeFileRepository implements RecipeRepository {
         }
     }
 
-    public Recipe selectRecipe(String recipeName) {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+    @Override
+    public Recipe randomRecipe() {
+        List<Recipe> recipes = readRecipesFromFile();
+        if (recipes.isEmpty()) {
+            return null;
+        } else {
+            Random random = new Random();
+            return recipes.get(random.nextInt(recipes.size()));
+        }
+    }
+
+    private List<Recipe> readRecipesFromFile() {
+        List<Recipe> recipes = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILENAME))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 Recipe recipe = stringToRecipe(line);
-                if (recipe.getName().equals(recipeName)) {
-                    return recipe;
-                }
+                recipes.add(recipe);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return recipes;
     }
+
+
 
     private String recipeToString(Recipe recipe) {
         StringBuilder sb = new StringBuilder();

@@ -5,6 +5,7 @@ import usecase.AddRecipeUseCase;
 import usecase.DeleteRecipeUseCase;
 import usecase.SearchRecipeUseCase;
 import usecase.UpdateRecipeUseCase;
+import usecase.RandomRecipeUseCase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class RecipeBookApplication {
     private final SearchRecipeUseCase searchRecipeUseCase;
     private final UpdateRecipeUseCase updateRecipeUseCase;
     private final DeleteRecipeUseCase deleteRecipeUseCase;
+    private final RandomRecipeUseCase randomRecipeUseCase;
 
     public RecipeBookApplication() {
         RecipeFileRepository recipeRepository = new RecipeFileRepository();
@@ -22,6 +24,7 @@ public class RecipeBookApplication {
         searchRecipeUseCase = new SearchRecipeUseCase(recipeRepository);
         updateRecipeUseCase = new UpdateRecipeUseCase(recipeRepository);
         deleteRecipeUseCase = new DeleteRecipeUseCase(recipeRepository);
+        randomRecipeUseCase = new RandomRecipeUseCase(recipeRepository);
     }
 
     public void run() {
@@ -31,8 +34,9 @@ public class RecipeBookApplication {
             System.out.println("1. Add recipe");
             System.out.println("2. Search recipes");
             System.out.println("3. Update recipe");
-            System.out.println("4. Delete recipe");
-            System.out.println("5. Exit");
+            System.out.println("4. Random recipe");
+            System.out.println("5. Delete recipe");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -47,14 +51,27 @@ public class RecipeBookApplication {
                     updateRecipe();
                     break;
                 case 4:
-                    deleteRecipe();
+                    randomRecipe();
                     break;
                 case 5:
+                    deleteRecipe();
+                    break;
+                case 6:
                     System.out.println("Goodbye!");
                     return;
                 default:
                     System.out.println("Invalid choice");
             }
+        }
+    }
+
+    private void randomRecipe() {
+        Recipe randomRecipe = randomRecipeUseCase.execute();
+        if (randomRecipe == null) {
+            System.out.println("No recipes found");
+        } else {
+            System.out.println("Random recipe:");
+            System.out.println(randomRecipe);
         }
     }
 

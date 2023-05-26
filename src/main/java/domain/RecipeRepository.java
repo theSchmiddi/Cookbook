@@ -7,4 +7,5 @@ public interface RecipeRepository {
     List<Recipe> searchRecipes(String query);
     void updateRecipe(Recipe recipe);
     void deleteRecipe(Recipe recipe);
+    Recipe randomRecipe();
 }
