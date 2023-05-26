@@ -1,7 +1,12 @@
 package usecase;
 
-import domain.*;
+import domain.Ingredient;
+import domain.ShoppingList;
+import domain.ShoppingListItem;
+import domain.ShoppingListRepository;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingListUseCase {
@@ -21,6 +26,12 @@ public class ShoppingListUseCase {
     public void removeItemFromShoppingList(ShoppingListItem item) {
         shoppingList.removeItem(item);
         shoppingListRepository.saveShoppingList(shoppingList);
+    }
+
+    public void deleteShoppingList() {
+        ShoppingList emptyList = new ShoppingList(new ArrayList<>());
+        shoppingListRepository.saveShoppingList(emptyList);
+        shoppingList = emptyList;
     }
 
     public List<ShoppingListItem> getShoppingList() {

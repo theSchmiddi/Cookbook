@@ -123,9 +123,7 @@ public class RecipeFileRepository implements RecipeRepository {
             if (ingredient.getAmount() != 0) {
                 sb.append(":").append(ingredient.getAmount());
             }
-            if (!ingredient.getUnit().isEmpty()) {
-                sb.append(":").append(ingredient.getUnit());
-            }
+            sb.append(":").append(ingredient.getUnit());
             sb.append(",");
         }
         sb.append("|");
@@ -146,13 +144,8 @@ public class RecipeFileRepository implements RecipeRepository {
             String ingredientName = ingredient[0];
             int ingredientAmount = 0;
             String ingredientUnit = "";
-            if (ingredient.length > 1) {
-                String[] amountAndUnit = ingredient[1].split(" ");
-                ingredientAmount = Integer.parseInt(amountAndUnit[0]);
-                if (amountAndUnit.length > 1) {
-                    ingredientUnit = amountAndUnit[1];
-                }
-            }
+                ingredientAmount = Integer.parseInt(ingredient[1]);
+                ingredientUnit = ingredient[2];
             ingredients.add(new Ingredient(ingredientName, ingredientAmount, ingredientUnit));
         }
         String preparation = parts[2];

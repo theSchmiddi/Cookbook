@@ -40,7 +40,8 @@ public class RecipeBookApplication {
             System.out.println("6. Add recipe to shopping list");
             System.out.println("7. Remove item from shopping list");
             System.out.println("8. View shopping list");
-            System.out.println("9. Exit");
+            System.out.println("9. Delete shopping list");
+            System.out.println("10. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -70,6 +71,9 @@ public class RecipeBookApplication {
                     viewShoppingList();
                     break;
                 case 9:
+                    deleteShoppingList();
+                    break;
+                case 10:
                     System.out.println("Goodbye!");
                     return;
                 default:
@@ -96,18 +100,28 @@ public class RecipeBookApplication {
         List<String> ingredientStrings = List.of(scanner.nextLine().split(","));
         List<Ingredient> ingredients = new ArrayList<>();
         for (String ingredientString : ingredientStrings) {
-            System.out.print("Enter amount for " + ingredientString.trim() + ": ");
-            String amountString = scanner.nextLine();
             int amount = 0;
-            try {
-                amount = Integer.parseInt(amountString.trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please enter a number");
-                continue;
+            while (true) {
+                System.out.print("Enter amount for " + ingredientString.trim() + ": ");
+                String amountString = scanner.nextLine();
+                try {
+                    amount = Integer.parseInt(amountString.trim());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input, please enter a number");
+                }
             }
-            System.out.print("Enter unit for " + ingredientString.trim() + ": ");
-            String unit = scanner.nextLine();
-            Ingredient ingredient = new Ingredient(ingredientString.trim(), amount, unit.trim());
+            String unit = "";
+            while (true) {
+                System.out.print("Enter unit for " + ingredientString.trim() + ": ");
+                unit = scanner.nextLine().trim();
+                if (!unit.isEmpty()) {
+                    break;
+                } else {
+                    System.out.println("Invalid input, please enter a non-empty unit");
+                }
+            }
+            Ingredient ingredient = new Ingredient(ingredientString.trim(), amount, unit);
             ingredients.add(ingredient);
         }
         System.out.print("Enter preparation: ");
@@ -132,12 +146,12 @@ public class RecipeBookApplication {
                 System.out.println("Invalid input, please enter a number");
             }
         }
-            System.out.print("Enter notes: ");
-            String notes = scanner.nextLine();
-            Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
-            addRecipeUseCase.execute(recipe);
-            System.out.println("Recipe added successfully");
-        }
+        System.out.print("Enter notes: ");
+        String notes = scanner.nextLine();
+        Recipe recipe = new Recipe(name, ingredients, preparation, preparationTime, servings, notes);
+        addRecipeUseCase.execute(recipe);
+        System.out.println("Recipe added successfully");
+    }
         private void searchRecipes() {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter search query: ");
@@ -303,15 +317,12 @@ public class RecipeBookApplication {
         if (itemToRemove != null) {
             shoppingListUseCase.removeItemFromShoppingList(itemToRemove);
             System.out.println("Item removed from shopping list");
-            System.out.println("Your current shopping list:");
-            viewShoppingList();
-            System.out.println();
-            System.out.println();
         } else {
             System.out.println("Item not found in shopping list");
-            System.out.println();
-            System.out.println();
         }
+        System.out.println("Your current shopping list:");
+        viewShoppingList();
+        System.out.println();
     }
 
     private void viewShoppingList() {
@@ -326,7 +337,10 @@ public class RecipeBookApplication {
             }
         }
         System.out.println();
-        System.out.println();
+    }
+    private void deleteShoppingList() {
+        shoppingListUseCase.deleteShoppingList();
+        System.out.println("Shopping list deleted");
     }
 
         public static void main(String[] args) {

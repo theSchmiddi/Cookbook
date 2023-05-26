@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added new function Random Recipe">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added new function ShoppingList">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/ShoppingList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/ShoppingListItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/ShoppingListRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/framework/ShoppingListFileRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/usecase/ShoppingListUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/shoppingList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/usecase/ShoppingListUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/usecase/ShoppingListUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shoppingList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shoppingList.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="35312000" />
+      <workItem from="1684927076597" duration="41788000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -194,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685087645731</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added new function ShoppingList">
+      <created>1685113997758</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685113997758</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +227,7 @@
     <MESSAGE value="Added ingredient amount" />
     <MESSAGE value="Error handling added to search" />
     <MESSAGE value="Added new function Random Recipe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new function Random Recipe" />
+    <MESSAGE value="Added new function ShoppingList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new function ShoppingList" />
   </component>
 </project>

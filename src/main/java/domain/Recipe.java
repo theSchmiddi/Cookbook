@@ -84,11 +84,4 @@ public class Recipe {
         sb.append("Notes:\n").append(notes).append("\n");
         return sb.toString();
     }
-
-    public void addToShoppingList(ShoppingList shoppingList) {
-        for (Ingredient ingredient : ingredients) {
-            ShoppingListItem item = new ShoppingListItem(ingredient.getName(), ingredient.getAmount(), ingredient.getUnit());
-            shoppingList.addItem(item);
-        }
-    }
 }
