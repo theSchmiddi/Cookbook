@@ -14,7 +14,6 @@ public class RecipeBookApplication {
     private final DeleteRecipeUseCase deleteRecipeUseCase;
     private final RandomRecipeUseCase randomRecipeUseCase;
     private final ShoppingListUseCase shoppingListUseCase;
-    private final ShoppingListRepository shoppingListRepository;
 
     public RecipeBookApplication() {
         RecipeRepository recipeRepository = new RecipeFileRepository();
@@ -24,7 +23,7 @@ public class RecipeBookApplication {
         deleteRecipeUseCase = new DeleteRecipeUseCase(recipeRepository);
         randomRecipeUseCase = new RandomRecipeUseCase(recipeRepository);
 
-        shoppingListRepository = new ShoppingListFileRepository();
+        ShoppingListRepository shoppingListRepository = new ShoppingListFileRepository();
         shoppingListUseCase = new ShoppingListUseCase(shoppingListRepository);
     }
 
@@ -44,7 +43,7 @@ public class RecipeBookApplication {
             System.out.println("10. Exit");
             System.out.print("Enter your choice: ");
             String input = scanner.nextLine();
-            int choice = 0;
+            int choice;
             try {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
@@ -53,39 +52,23 @@ public class RecipeBookApplication {
             }
             boolean validChoice = true;
             switch (choice) {
-                case 1:
-                    addRecipe();
-                    break;
-                case 2:
-                    searchRecipes();
-                    break;
-                case 3:
-                    updateRecipe();
-                    break;
-                case 4:
-                    randomRecipe();
-                    break;
-                case 5:
-                    deleteRecipe();
-                    break;
-                case 6:
-                    addRecipeToShoppingList();
-                    break;
-                case 7:
-                    removeItemFromShoppingList();
-                    break;
-                case 8:
-                    viewShoppingList();
-                    break;
-                case 9:
-                    deleteShoppingList();
-                    break;
-                case 10:
+                case 1 -> addRecipe();
+                case 2 -> searchRecipes();
+                case 3 -> updateRecipe();
+                case 4 -> randomRecipe();
+                case 5 -> deleteRecipe();
+                case 6 -> addRecipeToShoppingList();
+                case 7 -> removeItemFromShoppingList();
+                case 8 -> viewShoppingList();
+                case 9 -> deleteShoppingList();
+                case 10 -> {
                     System.out.println("Goodbye!");
                     return;
-                default:
+                }
+                default -> {
                     System.out.println("Invalid choice");
                     validChoice = false;
+                }
             }
             while (!validChoice) {
                 System.out.print("Enter a valid choice: ");
@@ -97,47 +80,47 @@ public class RecipeBookApplication {
                     continue;
                 }
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         addRecipe();
                         validChoice = true;
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         searchRecipes();
                         validChoice = true;
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         updateRecipe();
                         validChoice = true;
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         randomRecipe();
                         validChoice = true;
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         deleteRecipe();
                         validChoice = true;
-                        break;
-                    case 6:
+                    }
+                    case 6 -> {
                         addRecipeToShoppingList();
                         validChoice = true;
-                        break;
-                    case 7:
+                    }
+                    case 7 -> {
                         removeItemFromShoppingList();
                         validChoice = true;
-                        break;
-                    case 8:
+                    }
+                    case 8 -> {
                         viewShoppingList();
                         validChoice = true;
-                        break;
-                    case 9:
+                    }
+                    case 9 -> {
                         deleteShoppingList();
                         validChoice = true;
-                        break;
-                    case 10:
+                    }
+                    case 10 -> {
                         System.out.println("Goodbye!");
                         return;
-                    default:
-                        System.out.println("Invalid choice");
+                    }
+                    default -> System.out.println("Invalid choice");
                 }
             }
         }
@@ -161,7 +144,7 @@ public class RecipeBookApplication {
         List<String> ingredientStrings = List.of(scanner.nextLine().split(","));
         List<Ingredient> ingredients = new ArrayList<>();
         for (String ingredientString : ingredientStrings) {
-            int amount = 0;
+            int amount;
             while (true) {
                 System.out.print("Enter amount for " + ingredientString.trim() + ": ");
                 String amountString = scanner.nextLine();
@@ -172,22 +155,18 @@ public class RecipeBookApplication {
                     System.out.println("Invalid input, please enter a number");
                 }
             }
-            String unit = "";
-            while (true) {
+            String unit;
+            do {
                 System.out.print("Enter unit for " + ingredientString.trim() + ": ");
                 unit = scanner.nextLine().trim();
-                if (!unit.isEmpty()) {
-                    break;
-                } else {
-                    System.out.println("Invalid input, please enter a non-empty unit");
-                }
-            }
+                System.out.println("Invalid input, please enter a non-empty unit");
+            } while (unit.isEmpty());
             Ingredient ingredient = new Ingredient(ingredientString.trim(), amount, unit);
             ingredients.add(ingredient);
         }
         System.out.print("Enter preparation: ");
         String preparation = scanner.nextLine();
-        int preparationTime = 0;
+        int preparationTime;
         while (true) {
             System.out.print("Enter preparation time (minutes): ");
             try {
@@ -197,7 +176,7 @@ public class RecipeBookApplication {
                 System.out.println("Invalid input, please enter a number");
             }
         }
-        int servings = 0;
+        int servings;
         while (true) {
             System.out.print("Enter servings: ");
             try {
@@ -225,7 +204,7 @@ public class RecipeBookApplication {
                 for (int i = 0; i < recipes.size(); i++) {
                     System.out.println((i + 1) + ". " + recipes.get(i).getName());
                 }
-                int choice = 0;
+                int choice;
                 while (true) {
                     System.out.print("Select a recipe (or enter 0 to cancel): ");
                     try {
