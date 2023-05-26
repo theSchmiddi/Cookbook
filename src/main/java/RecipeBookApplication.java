@@ -43,8 +43,15 @@ public class RecipeBookApplication {
             System.out.println("9. Delete shopping list");
             System.out.println("10. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            String input = scanner.nextLine();
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid choice");
+                continue;
+            }
+            boolean validChoice = true;
             switch (choice) {
                 case 1:
                     addRecipe();
@@ -78,6 +85,60 @@ public class RecipeBookApplication {
                     return;
                 default:
                     System.out.println("Invalid choice");
+                    validChoice = false;
+            }
+            while (!validChoice) {
+                System.out.print("Enter a valid choice: ");
+                input = scanner.nextLine();
+                try {
+                    choice = Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid choice");
+                    continue;
+                }
+                switch (choice) {
+                    case 1:
+                        addRecipe();
+                        validChoice = true;
+                        break;
+                    case 2:
+                        searchRecipes();
+                        validChoice = true;
+                        break;
+                    case 3:
+                        updateRecipe();
+                        validChoice = true;
+                        break;
+                    case 4:
+                        randomRecipe();
+                        validChoice = true;
+                        break;
+                    case 5:
+                        deleteRecipe();
+                        validChoice = true;
+                        break;
+                    case 6:
+                        addRecipeToShoppingList();
+                        validChoice = true;
+                        break;
+                    case 7:
+                        removeItemFromShoppingList();
+                        validChoice = true;
+                        break;
+                    case 8:
+                        viewShoppingList();
+                        validChoice = true;
+                        break;
+                    case 9:
+                        deleteShoppingList();
+                        validChoice = true;
+                        break;
+                    case 10:
+                        System.out.println("Goodbye!");
+                        return;
+                    default:
+                        System.out.println("Invalid choice");
+                }
             }
         }
     }
