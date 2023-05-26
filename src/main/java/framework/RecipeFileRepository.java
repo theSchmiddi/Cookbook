@@ -120,8 +120,11 @@ public class RecipeFileRepository implements RecipeRepository {
         sb.append(recipe.getName()).append("|");
         for (Ingredient ingredient : recipe.getIngredients()) {
             sb.append(ingredient.getName());
-            if (!ingredient.getAmount().isEmpty()) {
+            if (ingredient.getAmount() != 0) {
                 sb.append(":").append(ingredient.getAmount());
+            }
+            if (!ingredient.getUnit().isEmpty()) {
+                sb.append(":").append(ingredient.getUnit());
             }
             sb.append(",");
         }
@@ -141,11 +144,16 @@ public class RecipeFileRepository implements RecipeRepository {
         for (String ingredientPart : ingredientParts) {
             String[] ingredient = ingredientPart.split(":");
             String ingredientName = ingredient[0];
-            String ingredientAmount = "";
+            int ingredientAmount = 0;
+            String ingredientUnit = "";
             if (ingredient.length > 1) {
-                ingredientAmount = ingredient[1];
+                String[] amountAndUnit = ingredient[1].split(" ");
+                ingredientAmount = Integer.parseInt(amountAndUnit[0]);
+                if (amountAndUnit.length > 1) {
+                    ingredientUnit = amountAndUnit[1];
+                }
             }
-            ingredients.add(new Ingredient(ingredientName, ingredientAmount));
+            ingredients.add(new Ingredient(ingredientName, ingredientAmount, ingredientUnit));
         }
         String preparation = parts[2];
         int preparationTime = Integer.parseInt(parts[3]);

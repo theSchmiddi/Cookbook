@@ -74,12 +74,21 @@ public class Recipe {
         sb.append(name).append("\n");
         sb.append("Ingredients:\n");
         for (Ingredient ingredient : ingredients) {
-            sb.append("- ").append(ingredient).append("\n");
+            sb.append("- ").append(ingredient.getName()).append(": ")
+                    .append(ingredient.getAmount()).append(" ")
+                    .append(ingredient.getUnit()).append("\n");
         }
         sb.append("Preparation:\n").append(preparation).append("\n");
         sb.append("Preparation time: ").append(preparationTime).append(" minutes\n");
         sb.append("Servings: ").append(servings).append("\n");
         sb.append("Notes:\n").append(notes).append("\n");
         return sb.toString();
+    }
+
+    public void addToShoppingList(ShoppingList shoppingList) {
+        for (Ingredient ingredient : ingredients) {
+            ShoppingListItem item = new ShoppingListItem(ingredient.getName(), ingredient.getAmount(), ingredient.getUnit());
+            shoppingList.addItem(item);
+        }
     }
 }
