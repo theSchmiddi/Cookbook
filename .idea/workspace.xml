@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Updated pom.xml with mainClass">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added Unittest for Recipe and Ingredient">
       <change afterPath="$PROJECT_DIR$/src/test/java/RecipeBookApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/domain/IngredientTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/domain/RecipeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/ShoppingListItemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/ShoppingListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,14 +56,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.IngredientTest">
-    <configuration name="RecipeBookApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="RecipeBookApplication" />
-      <module name="Cookbook" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ShoppingListItemTest">
     <configuration name="IngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Cookbook" />
       <extension name="coverage">
@@ -89,16 +81,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecipeBookApplicationTest.testAddRecipe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Cookbook" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="RecipeBookApplicationTest" />
-      <option name="METHOD_NAME" value="testAddRecipe" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RecipeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Cookbook" />
       <extension name="coverage">
@@ -114,13 +96,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShoppingListItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cookbook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.ShoppingListItemTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShoppingListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cookbook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.ShoppingListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShoppingListItemTest" />
+        <item itemvalue="JUnit.ShoppingListTest" />
         <item itemvalue="JUnit.IngredientTest" />
         <item itemvalue="JUnit.RecipeTest" />
         <item itemvalue="JUnit.RecipeBookApplicationTest" />
-        <item itemvalue="JUnit.RecipeBookApplicationTest.testAddRecipe" />
-        <item itemvalue="Application.RecipeBookApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -133,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="56348000" />
+      <workItem from="1684927076597" duration="56774000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -282,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685137936507</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added Unittest for Recipe and Ingredient">
+      <created>1685138967616</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685138967616</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +340,7 @@
     <MESSAGE value="Changed id calculation" />
     <MESSAGE value="UI removed from RecipeBookApplication" />
     <MESSAGE value="Updated pom.xml with mainClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated pom.xml with mainClass" />
+    <MESSAGE value="Added Unittest for Recipe and Ingredient" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Unittest for Recipe and Ingredient" />
   </component>
 </project>
