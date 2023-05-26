@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Changed id calculation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="UI removed from RecipeBookApplication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="54029000" />
+      <workItem from="1684927076597" duration="55324000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -227,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685132152288</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="UI removed from RecipeBookApplication">
+      <created>1685136940547</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1685136940547</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +269,7 @@
     <MESSAGE value="Fixed warnings in RecipeBookApplication" />
     <MESSAGE value="Added id to recipe, to fix update problems" />
     <MESSAGE value="Changed id calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed id calculation" />
+    <MESSAGE value="UI removed from RecipeBookApplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI removed from RecipeBookApplication" />
   </component>
 </project>
