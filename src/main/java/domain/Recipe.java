@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Recipe {
-    private int id;
-    private String name;
-    private List<Ingredient> ingredients;
-    private String preparation;
-    private int preparationTime;
-    private int servings;
-    private String notes;
+    private final int id;
+    private final String name;
+    private final List<Ingredient> ingredients;
+    private final String preparation;
+    private final int preparationTime;
+    private final int servings;
+    private final String notes;
 
     public Recipe(int id, String name, List<Ingredient> ingredients, String preparation, int preparationTime, int servings, String notes) {
         this.id = id;

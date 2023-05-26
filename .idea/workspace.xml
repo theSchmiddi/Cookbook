@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Added id to recipe, to fix update problems">
+    <list default="true" id="5b722d93-1c36-43f2-8973-64019cef2153" name="Changes" comment="Changed id calculation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RecipeBookApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/RecipeFileRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/recipes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/recipes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684870079762</updated>
       <workItem from="1684870080822" duration="4856000" />
-      <workItem from="1684927076597" duration="49602000" />
+      <workItem from="1684927076597" duration="54029000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1684870635989</created>
@@ -221,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685130893502</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Changed id calculation">
+      <created>1685132152288</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1685132152288</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +263,7 @@
     <MESSAGE value="Added invalid check to run()" />
     <MESSAGE value="Fixed warnings in RecipeBookApplication" />
     <MESSAGE value="Added id to recipe, to fix update problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added id to recipe, to fix update problems" />
+    <MESSAGE value="Changed id calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed id calculation" />
   </component>
 </project>
