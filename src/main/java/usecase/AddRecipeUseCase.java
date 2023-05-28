@@ -3,8 +3,6 @@ package usecase;
 import domain.Recipe;
 import domain.RecipeRepository;
 
-import java.util.List;
-
 public class AddRecipeUseCase {
     private RecipeRepository recipeRepository;
 
