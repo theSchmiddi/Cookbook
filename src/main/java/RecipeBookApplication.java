@@ -114,7 +114,7 @@ public class RecipeBookApplication {
 
     private void deleteShoppingList() {
         shoppingListUseCase.deleteShoppingList();
-        System.out.println("Shopping list deleted");
+        consoleUI.displayMessage("Shopping list deleted");
     }
 
     public static void main(String[] args) {

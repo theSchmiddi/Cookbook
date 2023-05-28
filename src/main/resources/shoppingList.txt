@@ -1,3 +1,10 @@
-a:15 liter
-b:21 kg
-c:5 ml
+chicken breast:1250 g
+ onion:3 
+ garlic:8 cloves
+ ginger:3 inch
+ curry powder:5 tbsp
+ coconut milk:1000 ml
+ tomato paste:5 tbsp
+ salt:0 
+ pepper:0 
+ vegetable oil:0 
